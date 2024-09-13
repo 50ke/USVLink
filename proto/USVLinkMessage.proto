@@ -3,6 +3,13 @@ syntax = "proto3";
 import "msg_enum.proto";
 import "msg_register_request.proto";
 import "msg_register_response.proto";
+import "msg_deregister_request.proto";
+import "msg_deregister_response.proto";
+import "msg_connect_request.proto";
+import "msg_connect_response.proto";
+import "msg_disconnect_request.proto";
+import "msg_disconnect_response.proto";
+import "msg_system_information.proto";
 
 /* Common interface for all USVLink Messages */
 message MessagePacket{
@@ -18,8 +25,14 @@ message MessagePacket{
 
     /* 消息载荷 */
     oneof msg_payload {
-        RegisterRequest msg_register_request = 10;
-        RegisterResponse msg_register_response = 11;
+        RegisterRequest register_request = 10;
+        RegisterResponse register_response = 11;
+        DeregisterRequest deregister_request = 12;
+        DeregisterResponse deregister_response = 13;
+        ConnectRequest connect_request = 14;
+        ConnectResponse connect_response = 15;
+        DisconnectRequest disconnect_request = 16;
+        DisconnectResponse disconnect_response = 17;
+        SystemInformation system_information = 18;
     };
-
 }
