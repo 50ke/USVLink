@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-message SystemInfo{
+message SystemInformation{
     optional string name = 1;
     optional float longitude = 2;
     optional float latitude = 3;

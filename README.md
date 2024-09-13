@@ -47,7 +47,7 @@
 | MSG_ID_CONNECT_RESPONSE    | 5     | 连接响应        |
 | MSG_ID_DISCONNECT_REQUEST  | 6     | 断连请求        |
 | MSG_ID_DISCONNECT_RESPONSE | 7     | 断连响应        |
-| MSG_ID_SYSTEM_INFO         | 8     | 系统消息        |
+| MSG_ID_SYSTEM_INFORMATION  | 8     | 系统信息        |
 
 ## Messages
 ### MessagePacket
@@ -71,4 +71,4 @@
 ### ConnectResponse (5)
 ### DisconnectRequest (6)
 ### DisconnectResponse (7)
-### SystemInfo (8)
+### SystemInformation (8)
