@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "msg_enum.proto";
+import "msg_register_request.proto";
+import "msg_register_response.proto";
+
+/* Common interface for all USVLink Messages */
+message MessagePacket{
+    int32 system_id = 1;
+    int32 component_id = 2;
+    optional int32 target_system_id = 3;
+    optional int32 target_component_id = 4;
+    MsgId msg_id = 5;
+    int64 time_ms = 6;
+    optional MsgSrc msg_src = 7;
+    optional MsgLink msg_link = 8;
+    optional MsgChannel msg_channel = 9;
+
+    /* 消息载荷 */
+    oneof msg_payload {
+        RegisterRequest msg_register_request = 10;
+        RegisterResponse msg_register_response = 11;
+    };
+
+}

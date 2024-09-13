@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message SystemInfo{
+    optional string name = 1;
+    optional float longitude = 2;
+    optional float latitude = 3;
+    optional float altitude = 4;
+    bool connected = 5;
+}

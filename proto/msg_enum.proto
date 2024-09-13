@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+/* 消息来源 */
+enum MsgSrc{
+    MSG_SRC_USV = 0;    // 无人船
+    MSG_SRC_UGC = 1;    // 地面站
+    MSG_SRC_SERVER = 2; // 服务器
+}
+
+/* 通讯链路 */
+enum MsgLink{
+    MSG_LINK_NETWORK = 0;   // 网络
+    MSG_LINK_RADIO = 1;     // 电台
+    MSG_LINK_SATELLITE = 2; // 卫星
+}
+
+/* 通讯通道 */
+enum MsgChannel{
+    MSG_CHANNEL_UDP = 0;            // UDP传输
+    MSG_CHANNEL_WS = 1;             // Websocket传输
+    MSG_CHANNEL_MQTT = 2;           // MQTT传输
+    MSG_CHANNEL_SERIAL_PORT = 3;    // 串口传输
+}
+
+/* 消息ID */
+enum MsgId{
+    MSG_ID_REGISTER_REQUEST = 0;        // 注册请求
+    MSG_ID_REGISTER_RESPONSE = 1;       // 注册响应
+    MSG_ID_DEREGISTER_REQUEST = 2;      // 注销请求
+    MSG_ID_DEREGISTER_RESPONSE = 3;     // 注销响应
+    MSG_ID_CONNECT_REQUEST = 4;         // 连接请求
+    MSG_ID_CONNECT_RESPONSE = 5;        // 连接响应
+    MSG_ID_DISCONNECT_REQUEST = 6;      // 断连请求
+    MSG_ID_DISCONNECT_RESPONSE = 7;     // 断连响应
+    MSG_ID_SYSTEM_INFO = 8;             // 系统消息
+}

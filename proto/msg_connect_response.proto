@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ConnectResponse{
+    bool result = 1;
+    optional string err_msg = 2;
+}
