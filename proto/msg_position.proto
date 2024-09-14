@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "msg_enum.proto";
+
+message Position{
+    UsvFrame usv_frame = 1;
+    float velocity = 2;
+    float longitude = 3;
+    float latitude = 4;
+    float altitude = 5;
+    float roll = 7;
+    float pitch = 8;
+    float yaw = 9;
+    float heading = 10;
+    float depth = 11;
+    int32 satellite_num = 12;
+    float relative_distance = 6;
+}

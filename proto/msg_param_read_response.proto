@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "msg_param.proto";
+
+message ParamReadResponse{
+    repeated Param params = 1;
+}

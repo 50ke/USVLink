@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "msg_point_2d.proto";
+
+message MissionReadResponse{
+    repeated Point2d waypoints = 1;
+}

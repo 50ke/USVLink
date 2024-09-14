@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message Battery{
+    int32 remaining = 1;
+}
