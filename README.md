@@ -1,17 +1,21 @@
 # USVLink
 无人船系统组网/通信库
 
-## Overview
-
-## Getting Started
-### Java
-### C++
-### Python
-
 ## Proto Introduction
 - link_protocol.proto：消息抽象类
 - msg_enum.proto：枚举值
 - msg_xxx.proto：消息载荷
+
+## 消息定义
+### 定义普通消息
+- 第一步：创建msg_xxx.proto
+- 第二步：在[msg_enum.proto](proto%2Fmsg_enum.proto)添加MsgId
+### 定义控制消息
+- 第一步：在[msg_enum.proto](proto%2Fmsg_enum.proto)添加CmdId
+- 第二步：在README声明控制消息的参数设置，参考：CMD_ID_NAV_WAYPOINT、CMD_ID_DO_WEIGH_ANCHOR、CMD_ID_DO_DROP_ANCHOR
+- 说明1：CMD_ID_NAV_XXX - 针对导航或和移动控制，例如：指点航行、指向航行等
+- 说明2：CMD_ID_DO_XXX - 针对立即动作控制，如改变速度、激活伺服、起锚抛锚等
+- 说明3：MAV_CMD_CONDITION_XXX - 根据条件改变任务的执行,例如：起航之前起锚
 
 ## Messages
 ### MessagePacket
@@ -163,13 +167,49 @@ opaque_id由船端生成。
 | status_flags       | int32 | Y        | 1       | 电池状态,1-正常,0-故障 |
 
 ## Command - 控制指令 (20)
-| Field  | Type  | Required | Example | Description |
-|--------|-------|----------|---------|-------------|
-| cmd_id | CmdId | Y        | 0       | 控制指令ID      |
-| param1 | float | N        | -       | 指令参数        |
-| param2 | float | N        | -       | 指令参数        |
-| param3 | float | N        | -       | 指令参数        |
-| param4 | float | N        | -       | 指令参数        |
-| param5 | float | N        | -       | 指令参数        |
-| param6 | float | N        | -       | 指令参数        |
-| param7 | float | N        | -       | 指令参数        |
+| Field  | Type  | Required | Example             | Description |
+|--------|-------|----------|---------------------|-------------|
+| cmd_id | CmdId | Y        | CMD_ID_NAV_WAYPOINT | 控制指令ID      |
+| param1 | float | N        | -                   | 指令参数        |
+| param2 | float | N        | -                   | 指令参数        |
+| param3 | float | N        | -                   | 指令参数        |
+| param4 | float | N        | -                   | 指令参数        |
+| param5 | float | N        | -                   | 指令参数        |
+| param6 | float | N        | -                   | 指令参数        |
+| param7 | float | N        | -                   | 指令参数        |
+
+### CMD_ID_NAV_WAYPOINT - 导航至航点
+| Field  | Type  | Required | Example             | Description |
+|--------|-------|----------|---------------------|-------------|
+| cmd_id | CmdId | Y        | CMD_ID_NAV_WAYPOINT | 控制指令ID      |
+| param1 | float | N        | 3                   | 航点停留时间（s）   |
+| param2 | float | N        | 1                   | 到达半径（m）     |
+| param3 | float | N        | 1                   | 通过半径（m）     |
+| param4 | float | N        | 15                  | 偏航角（°）      |
+| param5 | float | N        | 34.1230000          | 纬度          |
+| param6 | float | N        | 108.1110000         | 经度          |
+| param7 | float | N        | 0                   | 高程（m）       |
+
+### CMD_ID_DO_WEIGH_ANCHOR - 起锚
+| Field  | Type  | Required | Example                | Description         |
+|--------|-------|----------|------------------------|---------------------|
+| cmd_id | CmdId | Y        | CMD_ID_DO_WEIGH_ANCHOR | 控制指令ID              |
+| param1 | float | N        | -1                     | 起锚长度（m） ，-1表示收回全部锚链 |
+| param2 | float | N        | -                      | EMPTY               |
+| param3 | float | N        | -                      | EMPTY               |
+| param4 | float | N        | -                      | EMPTY               |
+| param5 | float | N        | -                      | EMPTY               |
+| param6 | float | N        | -                      | EMPTY               |
+| param7 | float | N        | -                      | EMPTY               |
+
+### CMD_ID_DO_DROP_ANCHOR - 抛锚
+| Field  | Type  | Required | Example               | Description         |
+|--------|-------|----------|-----------------------|---------------------|
+| cmd_id | CmdId | Y        | CMD_ID_DO_DROP_ANCHOR | 控制指令ID              |
+| param1 | float | N        | -1                    | 抛锚长度（m） ，-1表示下放全部锚链 |
+| param2 | float | N        | -                     | EMPTY               |
+| param3 | float | N        | -                     | EMPTY               |
+| param4 | float | N        | -                     | EMPTY               |
+| param5 | float | N        | -                     | EMPTY               |
+| param6 | float | N        | -                     | EMPTY               |
+| param7 | float | N        | -                     | EMPTY               |

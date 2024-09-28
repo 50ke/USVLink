@@ -40,7 +40,9 @@ enum MsgId{
 
 /* 控制指令ID */
 enum CmdId{
-    CMD_ID_NAV_WAYPOINT = 0; // 指点
+    CMD_ID_NAV_WAYPOINT = 0; // 导航至航点
+    CMD_ID_DO_WEIGH_ANCHOR = 1; // 起锚
+    CMD_ID_DO_DROP_ANCHOR = 2; // 抛锚
 }
 
 /* 坐标系 */
