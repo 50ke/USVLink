@@ -38,6 +38,11 @@ enum MsgId{
     MSG_ID_COMMAND = 20;                    // 指令
 }
 
+/* 控制指令ID */
+enum CmdId{
+    CMD_ID_NAV_WAYPOINT = 0; // 指点
+}
+
 /* 坐标系 */
 enum Frame{
     FRAME_GLOBAL = 0;                   // Global (WGS84) coordinate frame + altitude relative to mean sea level (MSL).

@@ -1,11 +1,14 @@
 syntax = "proto3";
 
+import "proto/msg_enum.proto";
+
 message Command{
-    float param1 = 1;
-    float param2 = 2;
-    float param3 = 3;
-    float param4 = 4;
-    float param5 = 5;
-    float param6 = 6;
-    float param7 = 7;
+    CmdId cmd_id = 1;
+    float param1 = 2;
+    float param2 = 3;
+    float param3 = 4;
+    float param4 = 5;
+    float param5 = 6;
+    float param6 = 7;
+    float param7 = 8;
 }

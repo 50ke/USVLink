@@ -64,7 +64,7 @@ GCS端不用设置latitude、longitude、anchor_remaining。
 | param_value | float  | Y        | 1            | 参数值         |
 | param_index | int32  | Y        | 0            | 参数索引        |
 
-### ParamReadRequest (6)
+### ParamReadRequest - 参数读取请求 (6)
 如果param_index=-1表示读取所有参数
 
 | Field       | Type   | Required | Example      | Description |
@@ -72,40 +72,40 @@ GCS端不用设置latitude、longitude、anchor_remaining。
 | param_id    | string | Y        | max-velocity | 参数名称        |
 | param_index | int32  | Y        | 1            | 参数索引        |
 
-### ParamReadResponse (7)
+### ParamReadResponse - 参数读取响应 (7)
 | Field       | Type         | Required | Example | Description   |
 |-------------|--------------|----------|---------|---------------|
 | ack         | int32        | Y        | 1       | 0-读取失败,1-读取成功 |
 | err_msg     | string       | N        | success | 读取失败信息        |
 | param_items | ParamItem[N] | Y        | -       | 参数项           |
 
-### ParamWriteRequest (8)
+### ParamWriteRequest - 参数设置请求 (8)
 | Field       | Type         | Required | Example | Description |
 |-------------|--------------|----------|---------|-------------|
 | param_items | ParamItem[N] | Y        | -       | 参数项         |
 
-### ParamWriteResponse (9)
+### ParamWriteResponse - 参数设置响应 (9)
 | Field       | Type            | Required | Example | Description   |
 |-------------|-----------------|----------|---------|---------------|
 | ack         | int32           | Y        | 1       | 0-读取失败,1-读取成功 |
 | err_msg     | string          | N        | success | 读取失败信息        |
 
-### MissionItem (10)
-| Field         | Type    | Required | Example | Description   |
-|---------------|---------|----------|---------|---------------|
-| seq           | int32   | Y        | 1       | 0-读取失败,1-读取成功 |
-| frame         | Frame   | N        | success | 读取失败信息        |
-| current       | bool    | N        | success | 读取失败信息        |
-| auto_continue | bool    | N        | success | 读取失败信息        |
-| x             | float   | N        | success | 读取失败信息        |
-| y             | float   | N        | success | 读取失败信息        |
-| z             | float   | N        | success | 读取失败信息        |
-| command       | Command | N        | success | 读取失败信息        |
+### MissionItem - 任务项 (10)
+| Field         | Type    | Required | Example             | Description           |
+|---------------|---------|----------|---------------------|-----------------------|
+| seq           | int32   | Y        | 0                   | 任务项序号(从0开始)           |
+| frame         | Frame   | Y        | FRAME_GLOBAL        | 航点坐标系（推荐全局坐标系）        |
+| current       | bool    | Y        | true                | 是否为当前任务项              |
+| auto_continue | bool    | Y        | true                | 当前任务项完成时，是否自动执行下一个任务项 |
+| x             | float   | Y        | 34.1040000          | latitude              |
+| y             | float   | Y        | 108.4350000         | longitude             |
+| z             | float   | Y        | 0.00000000          | altitude              |
+| command       | Command | Y        | CMD_ID_NAV_WAYPOINT | 航点动作                  |
 
-### MissionDownloadRequest (11)
+### MissionDownloadRequest - 任务下载请求 (11)
 空载荷
 
-### MissionDownloadResponse (12)
+### MissionDownloadResponse - 任务下载响应 (12)
 opaque_id由船端生成。
 
 | Field         | Type           | Required | Example | Description   |
@@ -115,12 +115,12 @@ opaque_id由船端生成。
 | opaque_id     | int32          | N        | 1001001 | 任务ID          |
 | mission_items | MissionItem[N] | Y        | -       | 任务项           |
 
-### MissionUploadRequest (13)
+### MissionUploadRequest - 任务上传请求 (13)
 | Field         | Type           | Required | Example | Description   |
 |---------------|----------------|----------|---------|---------------|
 | mission_items | MissionItem[N] | Y        | -       | 任务项           |
 
-### MissionUploadResponse (14)
+### MissionUploadResponse - 任务上传响应 (14)
 opaque_id由船端生成。
 
 | Field         | Type           | Required | Example | Description   |
@@ -129,29 +129,29 @@ opaque_id由船端生成。
 | err_msg       | string         | N        | success | 上传失败信息        |
 | opaque_id     | int32          | N        | 1001001 | 任务ID          |
 
-### MissionCurrent (15)
+### MissionCurrent - 当前任务项 (15)
 | Field         | Type         | Required | Example              | Description |
 |---------------|--------------|----------|----------------------|-------------|
 | mission_state | MissionState | Y        | MISSION_STATE_ACTIVE | 任务状态        |
 | mission_id    | int32        | Y        | 1001001              | 任务ID        |
 | mission_item  | MissionItem  | Y        | -                    | 当前任务项       |
 
-### MissionSetCurrent (16)
+### MissionSetCurrent - 设置当前任务项 (16)
 | Field | Type  | Required | Example | Description            |
 |-------|-------|----------|---------|------------------------|
 | seq   | int32 | Y        | 0       | 任务项序号,-1表示重新执行当前任务项    |
 | reset | bool  | Y        | 0       | 1-重新执行当前任务,0-不重新执行当前任务 |
 
-### MissionClearRequest (17)
+### MissionClearRequest - 任务清理请求 (17)
 空载荷
 
-### MissionClearResponse (18)
+### MissionClearResponse - 任务请求响应 (18)
 | Field         | Type           | Required | Example | Description   |
 |---------------|----------------|----------|---------|---------------|
 | ack           | int32          | Y        | 1       | 0-清理失败,1-清理成功 |
 | err_msg       | string         | N        | success | 清理失败信息        |
 
-### BatteryStatus (19)
+### BatteryStatus - 电池状态 (19)
 | Field              | Type  | Required | Example | Description    |
 |--------------------|-------|----------|---------|----------------|
 | id                 | int32 | Y        | 0       | 电池ID           |
@@ -162,5 +162,14 @@ opaque_id由船端生成。
 | percent_remaining  | float | Y        | 50      | 剩余百分比（%）       |
 | status_flags       | int32 | Y        | 1       | 电池状态,1-正常,0-故障 |
 
-
-## Command (20)
+## Command - 控制指令 (20)
+| Field  | Type  | Required | Example | Description |
+|--------|-------|----------|---------|-------------|
+| cmd_id | CmdId | Y        | 0       | 控制指令ID      |
+| param1 | float | N        | -       | 指令参数        |
+| param2 | float | N        | -       | 指令参数        |
+| param3 | float | N        | -       | 指令参数        |
+| param4 | float | N        | -       | 指令参数        |
+| param5 | float | N        | -       | 指令参数        |
+| param6 | float | N        | -       | 指令参数        |
+| param7 | float | N        | -       | 指令参数        |
