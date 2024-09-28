@@ -1,27 +1,27 @@
 syntax = "proto3";
 
-import "proto/msg_enum.proto";
-import "proto/msg_heartbeat.proto";
-import "proto/msg_connect_request.proto";
-import "proto/msg_connect_response.proto";
-import "proto/msg_disconnect_request.proto";
-import "proto/msg_disconnect_response.proto";
-import "proto/msg_battery_status.proto";
-import "proto/msg_command.proto";
-import "proto/msg_mission_clear_request.proto";
-import "proto/msg_mission_clear_response.proto";
-import "proto/msg_mission_current.proto";
-import "proto/msg_mission_download_request.proto";
-import "proto/msg_mission_download_response.proto";
-import "proto/msg_mission_item.proto";
-import "proto/msg_mission_set_current.proto";
-import "proto/msg_mission_upload_request.proto";
-import "proto/msg_mission_upload_response.proto";
-import "proto/msg_param_item.proto";
-import "proto/msg_param_read_request.proto";
-import "proto/msg_param_read_response.proto";
-import "proto/msg_param_write_request.proto";
-import "proto/msg_param_write_response.proto";
+import "msg_enum.proto";
+import "msg_heartbeat.proto";
+import "msg_connect_request.proto";
+import "msg_connect_response.proto";
+import "msg_disconnect_request.proto";
+import "msg_disconnect_response.proto";
+import "msg_battery_status.proto";
+import "msg_command.proto";
+import "msg_mission_clear_request.proto";
+import "msg_mission_clear_response.proto";
+import "msg_mission_current.proto";
+import "msg_mission_download_request.proto";
+import "msg_mission_download_response.proto";
+import "msg_mission_item.proto";
+import "msg_mission_set_current.proto";
+import "msg_mission_upload_request.proto";
+import "msg_mission_upload_response.proto";
+import "msg_param_item.proto";
+import "msg_param_read_request.proto";
+import "msg_param_read_response.proto";
+import "msg_param_write_request.proto";
+import "msg_param_write_response.proto";
 
 
 /* Common interface for all LinkProtocol Messages */

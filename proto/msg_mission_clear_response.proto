@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "msg_enum.proto";
-
 message MissionClearResponse{
     int32 ack = 1;
     optional string err_msg = 2;

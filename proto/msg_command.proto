@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "proto/msg_enum.proto";
+import "msg_enum.proto";
 
 message Command{
     CmdId cmd_id = 1;
