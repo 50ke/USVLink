@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message ParamReadRequest{
+    string param_id = 1;
+}

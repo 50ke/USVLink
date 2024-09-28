@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "msg_param_item.proto";
+
+message ParamReadResponse{
+    int32 ack = 1;
+    string err_msg = 2;
+    repeated ParamItem param_items = 3;
+}

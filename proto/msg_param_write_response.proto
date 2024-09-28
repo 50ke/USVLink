@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ParamWriteResponse{
+    int32 ack = 1;
+    string err_msg = 2;
+}

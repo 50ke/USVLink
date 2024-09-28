@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "msg_param_item.proto";
+
+message ParamWriteRequest{
+    repeated ParamItem param_items = 1;
+}

@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message ParamItem{
+    string param_id = 1;
+    float param_value = 2;
+    int32 param_index = 3;
+}
