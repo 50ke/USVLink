@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "msg_enum.proto";
+import "msg_connect_request.proto";
+import "msg_connect_response.proto";
+import "msg_disconnect_request.proto";
+import "msg_disconnect_response.proto";
+
+/* Common interface for all LinkProtocol Messages */
+message MessagePacket{
+    int32 system_id = 1;
+    int32 component_id = 2;
+    optional int32 target_system_id = 3;
+    optional int32 target_component_id = 4;
+    MsgId msg_id = 5;
+    int64 time_ms = 6;
+    MsgSrc msg_src = 7;
+    MsgLink msg_link = 8;
+
+    /* 消息载荷 */
+    oneof msg_payload {
+        ConnectRequest connect_request = 9;
+        ConnectResponse connect_response = 10;
+        DisconnectRequest disconnect_request = 11;
+        DisconnectResponse disconnect_response = 12;
+    };
+}
