@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message Heartbeat{
+    string name = 1;
+    float latitude = 2;
+    float longitude = 3;
+    bool connect_status = 4;
+    int32 connect_target_system_id = 5;
+}
