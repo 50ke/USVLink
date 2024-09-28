@@ -5,7 +5,6 @@ import "msg_mission_item.proto";
 
 message MissionCurrent{
     MissionState mission_state = 1;
-    MissionMode mission_mode = 2;
-    int32 mission_id = 3;
-    MissionItem mission_item = 4;
+    int32 mission_id = 2;
+    MissionItem mission_item = 3;
 }

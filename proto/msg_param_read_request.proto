@@ -2,4 +2,5 @@ syntax = "proto3";
 
 message ParamReadRequest{
     string param_id = 1;
+    int32 param_index = 2;
 }

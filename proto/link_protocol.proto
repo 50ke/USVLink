@@ -1,15 +1,33 @@
 syntax = "proto3";
 
-import "msg_enum.proto";
-import "msg_connect_request.proto";
-import "msg_connect_response.proto";
-import "msg_disconnect_request.proto";
-import "msg_disconnect_response.proto";
+import "proto/msg_enum.proto";
+import "proto/msg_heartbeat.proto";
+import "proto/msg_connect_request.proto";
+import "proto/msg_connect_response.proto";
+import "proto/msg_disconnect_request.proto";
+import "proto/msg_disconnect_response.proto";
+import "proto/msg_battery_status.proto";
+import "proto/msg_command.proto";
+import "proto/msg_mission_clear_request.proto";
+import "proto/msg_mission_clear_response.proto";
+import "proto/msg_mission_current.proto";
+import "proto/msg_mission_download_request.proto";
+import "proto/msg_mission_download_response.proto";
+import "proto/msg_mission_item.proto";
+import "proto/msg_mission_set_current.proto";
+import "proto/msg_mission_upload_request.proto";
+import "proto/msg_mission_upload_response.proto";
+import "proto/msg_param_item.proto";
+import "proto/msg_param_read_request.proto";
+import "proto/msg_param_read_response.proto";
+import "proto/msg_param_write_request.proto";
+import "proto/msg_param_write_response.proto";
+
 
 /* Common interface for all LinkProtocol Messages */
 message MessagePacket{
     int32 system_id = 1;
-    int32 component_id = 2;
+    optional int32 component_id = 2;
     optional int32 target_system_id = 3;
     optional int32 target_component_id = 4;
     MsgId msg_id = 5;
@@ -19,9 +37,26 @@ message MessagePacket{
 
     /* 消息载荷 */
     oneof msg_payload {
-        ConnectRequest connect_request = 9;
-        ConnectResponse connect_response = 10;
-        DisconnectRequest disconnect_request = 11;
-        DisconnectResponse disconnect_response = 12;
+        Heartbeat heartbeat = 9;
+        ConnectRequest connect_request = 10;
+        ConnectResponse connect_response = 11;
+        DisconnectRequest disconnect_request = 12;
+        DisconnectResponse disconnect_response = 13;
+        ParamItem param_item = 14;
+        ParamReadRequest param_read_request = 15;
+        ParamReadResponse param_read_response = 16;
+        ParamWriteRequest param_write_request = 17;
+        ParamWriteResponse param_write_response = 18;
+        MissionItem mission_item = 19;
+        MissionDownloadRequest mission_download_request = 20;
+        MissionDownloadResponse mission_download_response = 21;
+        MissionUploadRequest mission_upload_request = 22;
+        MissionUploadResponse mission_upload_response = 23;
+        MissionCurrent mission_current = 24;
+        MissionSetCurrent mission_set_current = 25;
+        MissionClearRequest mission_clear_request = 26;
+        MissionClearResponse mission_clear_response = 27;
+        BatteryStatus battery_status = 28;
+        Command command = 29;
     };
 }

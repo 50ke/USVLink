@@ -15,28 +15,27 @@ enum MsgLink{
 
 /* 消息ID */
 enum MsgId{
-    MSG_ID_CONNECT_REQUEST = 10;         // 连接请求
-    MSG_ID_CONNECT_RESPONSE = 11;             // 连接响应
-    MSG_ID_DISCONNECT_REQUEST = 12;      // 断连请求
-    MSG_ID_DISCONNECT_RESPONSE = 13;          // 断连响应
-
-    MSG_ID_PARAM_READ_REQUEST = 21;     // 参数读取请求
-    MSG_ID_PARAM_READ_RESPONSE = 22;    // 参数读取响应
-    MSG_ID_PARAM_SET_REQUEST = 23;      // 参数设置请求
-    MSG_ID_PARAM_SET_RESPONSE = 24;      // 参数设置响应
-
-    MSG_ID_MISSION_ITEM = 31; // 任务项
-    MSG_ID_MISSION_DOWNLOAD_REQUEST = 32;   // 任务下载请求
-    MSG_ID_MISSION_DOWNLOAD_RESPONSE = 33;  // 任务下载响应
-    MSG_ID_MISSION_UPLOAD_REQUEST = 34;  // 任务上传请求
-    MSG_ID_MISSION_UPLOAD_RESPONSE = 35; // 任务上传响应
-    MSG_ID_MISSION_CURRENT = 36; // 读取当前任务项
-    MSG_ID_MISSION_SET_CURRENT = 37; // 设置当前任务项
-    MSG_ID_MISSION_CLEAR_ALL = 38; // 设置当前任务项
-
-    MSG_ID_HEARTBEAT = 41;               // 心跳信息
-    MSG_ID_BATTERY_STATUS = 42;               // 电池状态
-
+    MSG_ID_HEARTBEAT = 0;                   // 心跳信息
+    MSG_ID_CONNECT_REQUEST = 1;             // 连接请求
+    MSG_ID_CONNECT_RESPONSE = 2;            // 连接响应
+    MSG_ID_DISCONNECT_REQUEST = 3;          // 断连请求
+    MSG_ID_DISCONNECT_RESPONSE = 4;         // 断连响应
+    MSG_ID_PARAM_ITEM = 5;                  // 参数项
+    MSG_ID_PARAM_READ_REQUEST = 6;          // 参数读取请求
+    MSG_ID_PARAM_READ_RESPONSE = 7;         // 参数读取响应
+    MSG_ID_PARAM_WRITE_REQUEST = 8;         // 参数设置请求
+    MSG_ID_PARAM_WRITE_RESPONSE = 9;        // 参数设置响应
+    MSG_ID_MISSION_ITEM = 10;               // 任务项
+    MSG_ID_MISSION_DOWNLOAD_REQUEST = 11;   // 任务下载请求
+    MSG_ID_MISSION_DOWNLOAD_RESPONSE = 12;  // 任务下载响应
+    MSG_ID_MISSION_UPLOAD_REQUEST = 13;     // 任务上传请求
+    MSG_ID_MISSION_UPLOAD_RESPONSE = 14;    // 任务上传响应
+    MSG_ID_MISSION_CURRENT = 15;            // 读取当前任务项
+    MSG_ID_MISSION_SET_CURRENT = 16;        // 设置当前任务项
+    MSG_ID_MISSION_CLEAR_REQUEST = 17;      // 清理任务请求
+    MSG_ID_MISSION_CLEAR_RESPONSE = 18;     // 清理任务响应
+    MSG_ID_BATTERY_STATUS = 19;             // 电池状态
+    MSG_ID_COMMAND = 20;                    // 指令
 }
 
 /* 坐标系 */
@@ -52,12 +51,6 @@ enum Frame{
     FRAME_LOCAL_FLU = 8;                // FLU local tangent frame (x: Forward, y: Left, z: Up) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.
 }
 
-/* 任务结果 */
-enum MissionResult{
-    MISSION_RESULT_ACCEPTED = 0;
-    MISSION_RESULT_ERROR = 1;
-}
-
 /* 任务状态 */
 enum MissionState{
     MISSION_STATE_UNKNOWN = 0;
@@ -66,11 +59,4 @@ enum MissionState{
     MISSION_STATE_ACTIVE = 3;
     MISSION_STATE_PAUSED = 4;
     MISSION_STATE_COMPLETE = 5;
-}
-
-/* 任务模式 */
-enum MissionMode{
-    MISSION_MODE_UNKNOWN = 0;
-    MISSION_MODE_MISSION = 1;
-    MISSION_MODE_SUSPENDED = 2;
 }

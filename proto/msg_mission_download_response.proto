@@ -1,11 +1,10 @@
 syntax = "proto3";
 
-import "msg_enum.proto";
 import "msg_mission_item.proto";
 
 message MissionDownloadResponse{
-    MissionResult mission_result = 1;
-    string err_msg = 2;
-    int32 opaque_id = 3;
+    int32 ack = 1;
+    optional string err_msg = 2;
+    optional int32 opaque_id = 3;
     repeated MissionItem mission_items = 4;
 }

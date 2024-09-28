@@ -1,9 +1,7 @@
 syntax = "proto3";
 
-import "msg_enum.proto";
-
 message MissionUploadResponse{
-    MissionResult mission_result = 1;
-    string err_msg = 2;
-    uint32 opaque_id = 3;
+    int32 ack = 1;
+    optional string err_msg = 2;
+    optional int32 opaque_id = 3;
 }

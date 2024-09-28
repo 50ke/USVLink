@@ -2,5 +2,5 @@ syntax = "proto3";
 
 message DisconnectResponse{
     int32 ack = 1;
-    string err_msg = 2;
+    optional string err_msg = 2;
 }
