@@ -1,6 +1,0 @@
-syntax = "proto3";
-
-message Point2d{
-    int32 x = 1;
-    int32 y = 2;
-}

@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message MissionSetCurrent{
+    int32 seq = 1;
+    bool reset = 2;
+}

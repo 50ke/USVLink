@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-message RegisterResponse{
-    int32 assign_id = 1;
-}

@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-import "msg_point_2d.proto";
-
-message MissionWriteRequest{
-    repeated Point2d waypoints = 1;
-}

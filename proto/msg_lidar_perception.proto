@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-import "msg_obstacle.proto";
-
-message LidarPerception{
-    repeated Obstacle obstacles = 1;
-}

@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "msg_mission_item.proto";
+
+message MissionUploadRequest{
+    repeated MissionItem mission_items = 1;
+}

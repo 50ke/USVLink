@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-message DeregisterResponse{
-    bool result = 1;
-}

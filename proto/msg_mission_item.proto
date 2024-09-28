@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "msg_enum.proto";
+import "msg_command.proto";
+
+message MissionItem{
+    int32 seq = 1;
+    Frame frame = 2;
+    bool current = 3;
+    bool auto_continue = 4;
+    float x = 5;
+    float y = 6;
+    float z = 7;
+    Command command = 8;
+}

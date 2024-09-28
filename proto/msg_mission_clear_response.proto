@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "msg_enum.proto";
+
+message MissionClearResponse{
+    MissionResult mission_result = 1;
+    string err_msg = 2;
+}

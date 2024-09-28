@@ -1,5 +1,0 @@
-syntax = "proto3";
-
-message ParamReadRequest{
-    string key = 1;
-}

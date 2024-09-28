@@ -3,64 +3,74 @@ syntax = "proto3";
 /* 消息来源 */
 enum MsgSrc{
     MSG_SRC_USV = 0;    // 无人船
-    MSG_SRC_UGC = 1;    // 地面站
+    MSG_SRC_GCS = 1;    // 地面站
     MSG_SRC_SERVER = 2; // 服务器
 }
 
 /* 通讯链路 */
 enum MsgLink{
-    MSG_LINK_NETWORK = 0;   // 网络
-    MSG_LINK_RADIO = 1;     // 电台
-    MSG_LINK_SATELLITE = 2; // 卫星
-}
-
-/* 通讯通道 */
-enum MsgChannel{
-    MSG_CHANNEL_UDP = 0;            // UDP传输
-    MSG_CHANNEL_WS = 1;             // Websocket传输
-    MSG_CHANNEL_MQTT = 2;           // MQTT传输
-    MSG_CHANNEL_SERIAL_PORT = 3;    // 串口传输
+    MSG_LINK_MQTT = 0;           // MQTT传输
+    MSG_LINK_SERIAL_PORT = 1;    // 串口传输
 }
 
 /* 消息ID */
 enum MsgId{
-    MSG_ID_REGISTER_REQUEST = 0;        // 注册请求
-    MSG_ID_REGISTER_RESPONSE = 1;       // 注册响应
-    MSG_ID_DEREGISTER_REQUEST = 2;      // 注销请求
-    MSG_ID_DEREGISTER_RESPONSE = 3;     // 注销响应
-    MSG_ID_CONNECT_REQUEST = 4;         // 连接请求
-    MSG_ID_CONNECT_RESPONSE = 5;        // 连接响应
-    MSG_ID_DISCONNECT_REQUEST = 6;      // 断连请求
-    MSG_ID_DISCONNECT_RESPONSE = 7;     // 断连响应
-    MSG_ID_SYSTEM_INFORMATION = 8;      // 系统信息
-    MSG_ID_ANCHOR = 9;                  // 铰锚信息
-    MSG_ID_AUTOPILOT = 10;              // 自动驾驶仪信息
-    MSG_ID_BATTERY = 11;                // 电池信息
-    MSG_ID_LIDAR_PERCEPTION = 12;       // 激光雷达感知信息
-    MSG_ID_POSITION = 13;               // 位姿信息
-    MSG_ID_VIDEO_STREAM = 14;           // 流媒体信息
-    MSG_ID_MISSION_READ_REQUEST = 15;   // 读取航点请求
-    MSG_ID_MISSION_READ_RESPONSE = 16;  // 读取航点响应
-    MSG_ID_MISSION_WRITE_REQUEST = 17;  // 上传航点请求
-    MSG_ID_MISSION_WRITE_RESPONSE = 18; // 上传航点请求
-    MSG_ID_MISSION_CURRENT = 19;        // 当前航点信息
-    MSG_ID_PARAM_READ_REQUEST = 20;     // 参数读取请求
-    MSG_ID_PARAM_READ_RESPONSE = 21;    // 参数读取响应
-    MSG_ID_PARAM_SET_REQUEST = 22;      // 参数设置请求
+    MSG_ID_CONNECT_REQUEST = 10;         // 连接请求
+    MSG_ID_CONNECT_RESPONSE = 11;             // 连接响应
+    MSG_ID_DISCONNECT_REQUEST = 12;      // 断连请求
+    MSG_ID_DISCONNECT_RESPONSE = 13;          // 断连响应
+
+    MSG_ID_PARAM_READ_REQUEST = 21;     // 参数读取请求
+    MSG_ID_PARAM_READ_RESPONSE = 22;    // 参数读取响应
+    MSG_ID_PARAM_SET_REQUEST = 23;      // 参数设置请求
+    MSG_ID_PARAM_SET_RESPONSE = 24;      // 参数设置响应
+
+    MSG_ID_MISSION_ITEM = 31; // 任务项
+    MSG_ID_MISSION_DOWNLOAD_REQUEST = 32;   // 任务下载请求
+    MSG_ID_MISSION_DOWNLOAD_RESPONSE = 33;  // 任务下载响应
+    MSG_ID_MISSION_UPLOAD_REQUEST = 34;  // 任务上传请求
+    MSG_ID_MISSION_UPLOAD_RESPONSE = 35; // 任务上传响应
+    MSG_ID_MISSION_CURRENT = 36; // 读取当前任务项
+    MSG_ID_MISSION_SET_CURRENT = 37; // 设置当前任务项
+    MSG_ID_MISSION_CLEAR_ALL = 38; // 设置当前任务项
+
+    MSG_ID_HEARTBEAT = 41;               // 心跳信息
+    MSG_ID_BATTERY_STATUS = 42;               // 电池状态
+
 }
 
 /* 坐标系 */
-enum UsvFrame{
-    USV_FRAME_GLOBAL = 0;
-    USV_FRAME_LOCAL_NED = 1;
-    USV_FRAME_LOCAL_ENU = 2;
-    USV_FRAME_LOCAL_FRD = 3;
-    USV_FRAME_LOCAL_FLU = 4;
-    USV_FRAME_BODY_FRD = 5;
+enum Frame{
+    FRAME_GLOBAL = 0;                   // Global (WGS84) coordinate frame + altitude relative to mean sea level (MSL).
+    FRAME_LOCAL_NED = 1;                // NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.
+    FRAME_GLOBAL_RELATIVE_ALT = 2;      // Global (WGS84) coordinate frame + altitude relative to the home position.
+    FRAME_LOCAL_ENU = 3;                // ENU local tangent frame (x: East, y: North, z: Up) with origin fixed relative to earth.
+    FRAME_LOCAL_OFFSET_NED = 4;         // NED local tangent frame (x: North, y: East, z: Down) with origin that travels with the vehicle.
+    FRAME_GLOBAL_TERRAIN_ALT = 5;       // Global (WGS84) coordinate frame with AGL altitude (altitude at ground level).
+    FRAME_BODY_FRD = 6;                 // FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle.
+    FRAME_LOCAL_FRD = 7;                // FRD local tangent frame (x: Forward, y: Right, z: Down) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.
+    FRAME_LOCAL_FLU = 8;                // FLU local tangent frame (x: Forward, y: Left, z: Up) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.
 }
 
-/* 舵向 */
-enum SteerDirection{
-    STEER_DIRECTION_LEFT = 0;
-    STEER_DIRECTION_RIGHT = 1;
+/* 任务结果 */
+enum MissionResult{
+    MISSION_RESULT_ACCEPTED = 0;
+    MISSION_RESULT_ERROR = 1;
+}
+
+/* 任务状态 */
+enum MissionState{
+    MISSION_STATE_UNKNOWN = 0;
+    MISSION_STATE_NO_MISSION = 1;
+    MISSION_STATE_NOT_STARTED = 2;
+    MISSION_STATE_ACTIVE = 3;
+    MISSION_STATE_PAUSED = 4;
+    MISSION_STATE_COMPLETE = 5;
+}
+
+/* 任务模式 */
+enum MissionMode{
+    MISSION_MODE_UNKNOWN = 0;
+    MISSION_MODE_MISSION = 1;
+    MISSION_MODE_SUSPENDED = 2;
 }

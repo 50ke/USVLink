@@ -1,7 +1,11 @@
 syntax = "proto3";
 
-import "msg_point_2d.proto";
+import "msg_enum.proto";
+import "msg_mission_item.proto";
 
 message MissionCurrent{
-    Point2d waypoint = 1;
+    MissionState mission_state = 1;
+    MissionMode mission_mode = 2;
+    int32 mission_id = 3;
+    MissionItem mission_item = 4;
 }

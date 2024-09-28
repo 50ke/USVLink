@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message Command{
+    float param1 = 1;
+    float param2 = 2;
+    float param3 = 3;
+    float param4 = 4;
+    float param5 = 5;
+    float param6 = 6;
+    float param7 = 7;
+}
