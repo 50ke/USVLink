@@ -1,4 +1,5 @@
 syntax = "proto3";
+package UsvLink;
 
 /* 消息来源 */
 enum MsgSrc{

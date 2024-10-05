@@ -1,4 +1,5 @@
 syntax = "proto3";
+package UsvLink;
 
 message MissionSetCurrent{
     int32 seq = 1;

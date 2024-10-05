@@ -1,4 +1,5 @@
 syntax = "proto3";
+package UsvLink;
 
 message ConnectResponse{
     int32 ack = 1;

@@ -1,4 +1,5 @@
 syntax = "proto3";
+package UsvLink;
 
 import "msg_mission_item.proto";
 

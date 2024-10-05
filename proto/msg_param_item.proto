@@ -1,4 +1,5 @@
 syntax = "proto3";
+package UsvLink;
 
 message ParamItem{
     string param_id = 1;
